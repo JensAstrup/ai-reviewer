@@ -49,7 +49,7 @@ class PullRequestReviewer {
   async createThread() {
     const messages = [{
       role: 'user',
-      content: this.getDiff()
+      content: await this.getDiff()
     }]
     return client.beta.threads.create({
         messages: messages
