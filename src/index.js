@@ -11,15 +11,12 @@ class PullRequestReviewer {
   constructor() {
     const {context = {}} = github
     this.context = context
+    const token = core.getInput('GITHUB_TOKEN', {required: true})
     this.octokit = github.getOctokit(token)
   }
 
   async getDiff() {
     console.log('Run function started...')
-    const token = core.getInput('GITHUB_TOKEN', {required: true})
-
-
-    console.log('Getting pull request...')
 
     const {pull_request} = this.context.payload
 
