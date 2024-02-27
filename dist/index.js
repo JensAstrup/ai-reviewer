@@ -10,6 +10,7 @@ __nccwpck_require__.r(__webpack_exports__);
 /* harmony import */ var openai__WEBPACK_IMPORTED_MODULE_0__ = __nccwpck_require__(9725);
 
 
+
 const github = __nccwpck_require__(5514)
 const core = __nccwpck_require__(6164)
 
@@ -20,15 +21,12 @@ class PullRequestReviewer {
   constructor() {
     const {context = {}} = github
     this.context = context
+    const token = core.getInput('GITHUB_TOKEN', {required: true})
     this.octokit = github.getOctokit(token)
   }
 
   async getDiff() {
     console.log('Run function started...')
-    const token = core.getInput('GITHUB_TOKEN', {required: true})
-
-
-    console.log('Getting pull request...')
 
     const {pull_request} = this.context.payload
 
@@ -100,7 +98,7 @@ class PullRequestReviewer {
     await this.commentOnPullRequest(review)
     return review
 
-}
+  }
 }
 
 
