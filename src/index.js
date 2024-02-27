@@ -1,5 +1,6 @@
 import OpenAI from 'openai'
 
+
 const github = require('@actions/github')
 const core = require('@actions/core')
 
@@ -90,7 +91,7 @@ class PullRequestReviewer {
     await this.commentOnPullRequest(review)
     return review
 
-}
+  }
 }
 
 
